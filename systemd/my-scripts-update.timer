@@ -1,0 +1,12 @@
+[Unit]
+Description=Run my-scripts-update every morning at 07:00 SAST
+Documentation=https://github.com/wkirschbaum/scripts
+
+[Timer]
+OnCalendar=*-*-* 07:00:00 Africa/Johannesburg
+Persistent=true
+RandomizedDelaySec=10min
+Unit=my-scripts-update.service
+
+[Install]
+WantedBy=timers.target

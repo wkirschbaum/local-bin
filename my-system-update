@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+step() {
+    printf '\n\033[1;34m==> %s\033[0m\n' "$*"
+}
+
+step "apt update"
+sudo apt update
+
+step "apt upgrade"
+sudo apt upgrade -y
+
+step "apt autoremove"
+sudo apt autoremove -y
+
+step "apt autoclean"
+sudo apt autoclean
+
+if command -v fwupdmgr >/dev/null 2>&1; then
+    step "fwupdmgr refresh + update"
+    sudo fwupdmgr refresh --force || true
+    sudo fwupdmgr update -y || true
+fi
+
+if command -v snap >/dev/null 2>&1; then
+    step "snap refresh"
+    sudo snap refresh || printf '\033[1;33mwarning: snap refresh failed\033[0m\n'
+fi
+
+step "Done"

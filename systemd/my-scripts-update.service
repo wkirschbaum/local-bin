@@ -1,0 +1,11 @@
+[Unit]
+Description=Update local-bin scripts from git
+Documentation=https://github.com/wkirschbaum/scripts
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/my-scripts-update
+Nice=10
+IOSchedulingClass=idle

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Resolve the real path through the ~/.local/bin symlink to find the repo root.
+REPO_DIR="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
+
+echo "my-scripts-update: pulling latest"
+git -C "$REPO_DIR" pull --ff-only
+
+echo "my-scripts-update: re-linking scripts"
+"$REPO_DIR/install.sh" --skip-systemd
