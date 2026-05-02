@@ -1,6 +1,6 @@
 [Unit]
 Description=Run my-scripts-update every morning at 07:00 SAST
-Documentation=https://github.com/wkirschbaum/scripts
+Documentation=https://github.com/wkirschbaum/local-bin
 
 [Timer]
 OnCalendar=*-*-* 07:00:00 Africa/Johannesburg

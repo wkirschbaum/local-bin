@@ -16,16 +16,16 @@ mkdir -p "$(dirname "$BIN")"
 tmp=$(mktemp)
 trap 'rm -f "$tmp"' EXIT
 
-echo "update-expert: fetching $URL"
+echo "my-update-expert: fetching $URL"
 curl -fsSL --retry 3 --retry-delay 2 -o "$tmp" "$URL"
 
 # Skip the install step if the asset is byte-identical to what's
 # already on disk — keeps mtime stable and avoids touching the binary
 # while a running emacs has it open.
 if [[ -f "$BIN" ]] && cmp -s "$tmp" "$BIN"; then
-  echo "update-expert: already up to date"
+  echo "my-update-expert: already up to date"
   exit 0
 fi
 
 install -m 0755 "$tmp" "$BIN"
-echo "update-expert: installed $("$BIN" --version 2>/dev/null || echo nightly)"
+echo "my-update-expert: installed $("$BIN" --version 2>/dev/null || echo nightly)"

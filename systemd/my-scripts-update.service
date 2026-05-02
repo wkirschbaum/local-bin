@@ -1,6 +1,6 @@
 [Unit]
 Description=Update local-bin scripts from git
-Documentation=https://github.com/wkirschbaum/scripts
+Documentation=https://github.com/wkirschbaum/local-bin
 Wants=network-online.target
 After=network-online.target
 

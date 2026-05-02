@@ -7,8 +7,13 @@ SYSTEMD_DIR="$HOME/.config/systemd/user"
 
 step() { printf '\n\033[1;34m==> %s\033[0m\n' "$*"; }
 
-step "Stopping and disabling my-scripts-update.timer"
-systemctl --user disable --now my-scripts-update.timer 2>/dev/null || true
+step "Stopping and disabling timers"
+for unit in "$REPO_DIR"/systemd/*.timer; do
+  [[ -f "$unit" ]] || continue
+  name="$(basename "$unit")"
+  systemctl --user disable --now "$name" 2>/dev/null || true
+  echo "  $name: stopped"
+done
 
 step "Removing systemd user units"
 for unit in "$REPO_DIR"/systemd/*; do

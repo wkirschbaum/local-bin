@@ -26,7 +26,7 @@ for script in "$REPO_DIR"/my-*; do
     ln -sf "$script" "$target"
     echo "  $name: linked"
   fi
-  (( linked++ )) || true
+  linked=$(( linked + 1 ))
 done
 echo "  $linked script(s) processed"
 

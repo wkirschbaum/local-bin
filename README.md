@@ -7,8 +7,8 @@ Personal utility scripts for Ubuntu. All scripts are prefixed with `my-` for eas
 Clone the repo and run:
 
 ```bash
-git clone git@github.com:wkirschbaum/local-bin.git ~/src/wkirschbaum/scripts
-~/src/wkirschbaum/scripts/install.sh
+git clone git@github.com:wkirschbaum/local-bin.git ~/src/wkirschbaum/local-bin
+~/src/wkirschbaum/local-bin/install.sh
 ```
 
 This symlinks all `my-*` scripts into `~/.local/bin/` and installs a systemd user timer that runs
