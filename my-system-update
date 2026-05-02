@@ -2,7 +2,7 @@
 set -euo pipefail
 
 step() {
-    printf '\n\033[1;34m==> %s\033[0m\n' "$*"
+  printf '\n\033[1;34m==> %s\033[0m\n' "$*"
 }
 
 step "apt update"
@@ -26,6 +26,11 @@ fi
 if command -v snap >/dev/null 2>&1; then
     step "snap refresh"
     sudo snap refresh || printf '\033[1;33mwarning: snap refresh failed\033[0m\n'
+fi
+
+if command -v my-update-expert >/dev/null 2>&1; then
+  step "my-update-expert"
+  my-update-expert
 fi
 
 step "Done"

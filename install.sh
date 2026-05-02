@@ -30,7 +30,7 @@ for script in "$REPO_DIR"/my-*; do
 done
 echo "  $linked script(s) processed"
 
-$SKIP_SYSTEMD && exit 0
+[[ $SKIP_SYSTEMD == true ]] && exit 0
 
 step "Installing systemd user units"
 mkdir -p "$SYSTEMD_DIR"
