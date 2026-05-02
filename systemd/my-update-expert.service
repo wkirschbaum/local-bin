@@ -1,0 +1,11 @@
+[Unit]
+Description=Update Expert (Elixir LSP) to the latest nightly
+Documentation=https://github.com/expert-lsp/expert
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/my-update-expert
+Nice=10
+IOSchedulingClass=idle

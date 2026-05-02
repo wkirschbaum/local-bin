@@ -1,0 +1,12 @@
+[Unit]
+Description=Run my-update-expert every morning at 07:00 SAST
+Documentation=https://github.com/expert-lsp/expert
+
+[Timer]
+OnCalendar=*-*-* 07:00:00 Africa/Johannesburg
+Persistent=true
+RandomizedDelaySec=10min
+Unit=my-update-expert.service
+
+[Install]
+WantedBy=timers.target

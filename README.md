@@ -28,3 +28,4 @@ Removes all symlinks, stops and removes the systemd timer and service.
 |---|---|
 | `my-system-update` | Full system update: apt, fwupdmgr, snap |
 | `my-scripts-update` | Pull latest changes from git and re-link any new scripts |
+| `my-update-expert` | Download the latest Expert (Elixir LSP) nightly into `~/.local/bin/expert` |
