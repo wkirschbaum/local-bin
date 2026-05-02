@@ -43,7 +43,12 @@ done
 
 systemctl --user daemon-reload
 
-step "Enabling my-scripts-update.timer"
-systemctl --user enable --now my-scripts-update.timer
+step "Enabling timers"
+for unit in "$REPO_DIR"/systemd/*.timer; do
+  [[ -f "$unit" ]] || continue
+  name="$(basename "$unit")"
+  systemctl --user enable --now "$name"
+  echo "  $name: enabled"
+done
 
 step "Done"
